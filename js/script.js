@@ -1,8 +1,10 @@
 // Container
 const container = document.querySelector(".container");
 
-// Create new div
+// Loop
+for (x = 0; x < 255; x++) {
+  const div = document.createElement("div");
+  div.className = "square";
 
-// Get width and heigth of container
-
-// Loop and add div to container
+  container.append(div);
+}

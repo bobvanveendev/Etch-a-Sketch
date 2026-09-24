@@ -6,9 +6,9 @@ body {
 .container {
   display: flex;
   flex-wrap: wrap;
-  width: min(100%, 50rem);
-  aspect-ratio: 1 / 1;
-  border: 1px solid #000;
+  /* width: min(100%, 50rem);
+  aspect-ratio: 1 / 1; */
+  /* border: 1px solid #000; */
 }
 
 .square {
