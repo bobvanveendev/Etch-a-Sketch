@@ -1,6 +1,10 @@
 // Container
 const container = document.querySelector(".container");
 
+// Drawing state
+let drawing = false;
+let lastSquare = null;
+
 // Initial grid
 createGrid(16);
 
@@ -39,26 +43,57 @@ function createGrid(size) {
     div.dataset.hovers = 0;
 
     div.addEventListener("mouseover", (event) => {
-      const red = Math.floor(Math.random() * 256);
-      const green = Math.floor(Math.random() * 256);
-      const blue = Math.floor(Math.random() * 256);
-
-      event.currentTarget.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-
-      let hovers = Number(event.currentTarget.dataset.hovers);
-      hovers = hovers + 0.1;
-      if (hovers > 1) {
-        hovers = 1;
-      }
-      event.currentTarget.dataset.hovers = hovers;
-      event.currentTarget.style.opacity = hovers;
+      colorSquare(event.currentTarget);
     });
 
     container.append(div);
   }
 }
 
-// Function: Remove existing grid
+// Mobile drawing
+container.addEventListener("pointerdown", (event) => {
+  drawing = true;
+
+  if (event.target.classList.contains("square")) {
+    colorSquare(event.target);
+    lastSquare = event.target;
+  }
+});
+
+container.addEventListener("pointermove", (event) => {
+  if (!drawing) return;
+
+  const square = document.elementFromPoint(event.clientX, event.clientY);
+
+  if (square && square.classList.contains("square") && square !== lastSquare) {
+    colorSquare(square);
+    lastSquare = square;
+  }
+});
+
+window.addEventListener("pointerup", () => {
+  drawing = false;
+  lastSquare = null;
+});
+
+// Color squares
+function colorSquare(square) {
+  const red = Math.floor(Math.random() * 256);
+  const green = Math.floor(Math.random() * 256);
+  const blue = Math.floor(Math.random() * 256);
+
+  square.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+
+  let hovers = Number(square.dataset.hovers);
+  hovers = hovers + 0.1;
+  if (hovers > 1) {
+    hovers = 1;
+  }
+  square.dataset.hovers = hovers;
+  square.style.opacity = hovers;
+}
+
+// Clear grid
 function clearGrid() {
   container.replaceChildren();
 }
