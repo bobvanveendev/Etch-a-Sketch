@@ -1,18 +1,85 @@
 body {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  background:
+    radial-gradient(circle at top left, #416f52 0%, transparent 40%),
+    linear-gradient(135deg, #102b21, #1e4935 55%, #284f3b);
+}
+
+.etch-a-sketch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 5rem;
+  border-radius: 2rem;
+  background:
+    radial-gradient(
+      ellipse at 18% 30%,
+      rgba(45, 24, 12, 0.28) 0%,
+      rgba(45, 24, 12, 0.12) 8%,
+      transparent 18%
+    ),
+    radial-gradient(
+      ellipse at 78% 70%,
+      rgba(35, 18, 9, 0.22) 0%,
+      rgba(35, 18, 9, 0.1) 10%,
+      transparent 22%
+    ),
+    repeating-linear-gradient(
+      3deg,
+      transparent 0px,
+      transparent 13px,
+      rgba(55, 28, 12, 0.1) 15px,
+      transparent 20px,
+      transparent 34px,
+      rgba(88, 48, 25, 0.16) 37px,
+      transparent 42px
+    ),
+    repeating-linear-gradient(
+      -2deg,
+      transparent 0px,
+      transparent 28px,
+      rgba(40, 20, 10, 0.08) 31px,
+      transparent 36px
+    ),
+    linear-gradient(
+      90deg,
+      #6f4127 0%,
+      #8a5634 18%,
+      #704128 35%,
+      #9a6540 52%,
+      #6d3d25 72%,
+      #815033 100%
+    );
+  box-shadow:
+    inset 0 0 2rem rgba(35, 18, 8, 0.22),
+    0 1rem 2.5rem rgba(0, 0, 0, 0.18);
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
-  /* width: min(100%, 50rem);
-  aspect-ratio: 1 / 1; */
-  /* border: 1px solid #000; */
+  width: 256px;
+  height: 256px;
+  border: 1px solid #000;
+  background: #eee;
 }
 
 .square {
-  width: 6.25%;
-  aspect-ratio: 1 / 1;
-  border: 1px solid #000;
+  width: 16px;
+  height: 16px;
+}
+
+.grid-button {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2b241f;
+  background-color: #f3eadc;
+  border: 1px solid #d7c7ad;
+  border-radius: 0.75rem;
+  padding: 0.65rem 1.2rem;
+  margin-bottom: 2.5rem;
 }
